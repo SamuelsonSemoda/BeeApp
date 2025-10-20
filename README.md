@@ -5,3 +5,5 @@
 *Built in Laravel*
 
 *Samuel Šemoda*
+
+***DATABASE - MySQL, using XAMPP***
