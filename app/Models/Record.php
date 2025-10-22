@@ -11,9 +11,12 @@ class Record extends Model
 
     protected $fillable = ['beehive_id', 'datum', 'typ_akce', 'popis'];
 
+    protected $casts = [
+        'datum' => 'date', // 🟢 Laravel bude automaticky převádět na Carbon
+    ];
+
     public function beehive()
     {
         return $this->belongsTo(Beehive::class);
     }
 }
-
