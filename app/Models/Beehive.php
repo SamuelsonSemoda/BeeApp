@@ -9,5 +9,10 @@ class Beehive extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['nazev', 'poznamky'];
+    protected $fillable = ['nazev', 'cislo', 'pocet_nastavku', 'stanoviste', 'poznamky'];
+
+    public function records()
+    {
+        return $this->hasMany(Record::class);
+    }
 }
