@@ -41,6 +41,7 @@
     <tr>
         <th>Číslo</th>
         <th>Název</th>
+        <th>Počet nástavků</th>
         <th>Poznámky</th>
         <th>Akce</th>
     </tr>
@@ -48,6 +49,7 @@
         <tr>
             <td>{{ $b->cislo }}</td>
             <td><a href="{{ route('beehives.show', $b) }}">{{ $b->nazev }}</a></td>
+            <td style="font-weight: bold;text-align: center">{{ $b->pocet_nastavku }}</td>
             <td>{{ $b->poznamky }}</td>
             <td>
                 <form action="{{ route('beehives.destroy', $b) }}" method="POST" onsubmit="return confirm('Smazat úl?')">

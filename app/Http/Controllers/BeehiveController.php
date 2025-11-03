@@ -31,6 +31,12 @@ class BeehiveController extends Controller
     // Úly pro konkrétní stanoviště
     public function byStanoviste($slug)
     {
+        // Ověření, že složka existuje
+        $path = storage_path("app/stanoviste/{$slug}.json");
+        if (!file_exists($path)) {
+            abort(404, "Stanoviště {$slug} nebylo nalezeno.");
+        }
+
         $beehives = Beehive::where('stanoviste', $slug)->orderBy('cislo')->get();
         return view('beehives.list', compact('beehives', 'slug'));
     }
@@ -54,7 +60,8 @@ class BeehiveController extends Controller
     public function show(Beehive $beehive)
     {
         $records = $beehive->records()->orderBy('datum', 'desc')->get();
-        return view('beehives.show', compact('beehive', 'records'));
+        $slug = $beehive->stanoviste; // pro návrat zpět na správné stanoviště
+        return view('beehives.show', compact('beehive', 'records', 'slug'));
     }
 
     // Úprava úlu

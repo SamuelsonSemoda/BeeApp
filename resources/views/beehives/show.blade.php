@@ -119,7 +119,7 @@
     </table>
 @endif
 
-<p><a href="{{ route('beehives.index', $beehive->stanoviste) }}">← Zpět na seznam úlů</a></p>
+<p><a href="{{ route('beehives.byStanoviste', $slug) }}">← Zpět na seznam úlů</a></p>
 
 </body>
 </html>
