@@ -2,14 +2,22 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Beehive extends Model
 {
-    use HasFactory;
+    protected $fillable = [
+        'location_id',
+        'nazev',
+        'cislo',
+        'pocet_nastavku',
+        'poznamky'
+    ];
 
-    protected $fillable = ['nazev', 'cislo', 'pocet_nastavku', 'stanoviste', 'poznamky'];
+    public function location()
+    {
+        return $this->belongsTo(Location::class);
+    }
 
     public function records()
     {

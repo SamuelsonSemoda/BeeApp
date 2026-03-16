@@ -10,20 +10,29 @@ return new class extends Migration
     {
         Schema::dropIfExists('records');
         Schema::dropIfExists('beehives');
+        Schema::dropIfExists('locations');
+
+        Schema::create('locations', function (Blueprint $table) {
+            $table->id();
+            $table->string('nazev');
+            $table->string('lokace')->nullable();
+            $table->text('poznamky')->nullable();
+            $table->timestamps();
+        });
 
         Schema::create('beehives', function (Blueprint $table) {
             $table->id();
-            $table->string('nazev', 100);
+            $table->foreignId('location_id')->constrained()->cascadeOnDelete();
+            $table->string('nazev');
             $table->integer('cislo')->nullable();
             $table->integer('pocet_nastavku')->nullable();
-            $table->string('stanoviste');
             $table->text('poznamky')->nullable();
             $table->timestamps();
         });
 
         Schema::create('records', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('beehive_id')->constrained()->onDelete('cascade');
+            $table->foreignId('beehive_id')->constrained()->cascadeOnDelete();
             $table->date('datum');
             $table->string('typ_akce');
             $table->text('popis')->nullable();
@@ -35,5 +44,6 @@ return new class extends Migration
     {
         Schema::dropIfExists('records');
         Schema::dropIfExists('beehives');
+        Schema::dropIfExists('locations');
     }
 };
