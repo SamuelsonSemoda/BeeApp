@@ -239,9 +239,15 @@ li{
 
 }
 
-/* jednotlivý úl */
+/* karta úlu */
 
-.beehives > div{
+.beehive-card{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
 
     background:var(--color-surface);
 
@@ -249,21 +255,27 @@ li{
 
     border-radius:var(--radius);
 
-    padding:var(--space-md);
+    padding:16px;
 
-    margin-bottom:var(--space-sm);
-
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
+    margin-bottom:12px;
 
 }
 
 /* hover efekt */
 
-.beehives > div:hover{
+.beehive-card:hover{
 
     border-color:var(--color-primary);
+
+}
+
+/* odkaz na detail úlu */
+
+.beehive-link{
+
+    font-size:var(--text-lg);
+
+    font-weight:500;
 
 }
 

@@ -6,7 +6,7 @@
         @csrf
         @method('DELETE')
 
-        <button type="submit">
+        <button class="danger" type="submit">
             Smazat stanoviště
         </button>
 
@@ -30,26 +30,30 @@
 
     <hr>
 
-    @foreach($beehives as $beehive)
-        <div>
+    <div class="beehives">
 
-            <a href="{{ route('beehives.show',$beehive) }}">
-                Úl {{ $beehive->cislo }} - {{ $beehive->nazev }}
-            </a>
+        @foreach($beehives as $beehive)
 
-            <form action="{{ route('beehives.destroy',$beehive) }}" method="POST" style="display:inline;" onsubmit="return confirm('Smazat úl?')">
+            <div class="beehive-card">
 
-                @csrf
-                @method('DELETE')
+                <a class="beehive-link" href="{{ route('beehives.show',$beehive) }}">
+                    Úl {{ $beehive->cislo }} - {{ $beehive->nazev }}
+                </a>
 
-                <button type="submit" style="background:red;color:white;border:none;padding:4px 8px;border-radius:4px;">
-                    Smazat
-                </button>
+                <form action="{{ route('beehives.destroy',$beehive) }}" method="POST" onsubmit="return confirm('Smazat úl?')">
 
-            </form>
+                    @csrf
+                    @method('DELETE')
 
-        </div>
-    @endforeach
+                    <button class="danger">Smazat</button>
+
+                </form>
+
+            </div>
+
+        @endforeach
+
+    </div>
 
     <p>
         <a href="{{ route('locations.index') }}">
