@@ -1,4 +1,5 @@
 <main>
+    <meta name="robots" content="noindex">
     <link rel="stylesheet" href="{{ asset('css/global.css') }}">
     <h1>{{ $location->nazev }}</h1>
 
